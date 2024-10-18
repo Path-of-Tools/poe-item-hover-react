@@ -18,7 +18,7 @@ export function ItemHover({ itemData }: ItemHoverProps) {
 
   // Add back absolute
   return (
-    <div className="item-hover z-50 top-0 left-full bg-black/80 rounded-md  shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]">
+    <div className="item-hover z-50 top-0 left-full bg-black/80 rounded-md  shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] font-poe">
       <div className="flex flex-col gap-2">
         {itemName.length > 0 ? (
           <div className="rare-header__double flex flex-col text-center items-center">

@@ -35,7 +35,10 @@
   color: rgb(184, 218, 242);
 }
 
+.font-poe {
+  font-family: "fontin";
+}
 
-* {
-  display: none !important;
+.text-poe-default {
+  color: rgb(127, 127, 127);
 }

@@ -1,11 +1,13 @@
 import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
 import path from "path";
 
 export default defineConfig({
+  plugins: [react(), dts()],
   build: {
     lib: {
-      entry: path.resolve(__dirname, "src/index.ts"), // Path to your main TypeScript file
+      entry: path.resolve(__dirname, "src/index.ts"),
       name: "PoeItemHover",
       fileName: (format) => `poe-item-hover.${format}.js`,
     },
@@ -16,16 +18,19 @@ export default defineConfig({
           react: "React",
           "react-dom": "ReactDOM",
         },
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === 'style.css') return 'poe-item-hover.css';
+          return assetInfo.name as string;
+        },
       },
     },
   },
   css: {
-    preprocessorOptions: {
-      css: {
-        // Ensure relative imports of CSS are handled
-        url: true,
-      },
+    postcss: {
+      plugins: [
+        require('tailwindcss'),
+        require('autoprefixer'),
+      ],
     },
   },
-  plugins: [dts()],
 });

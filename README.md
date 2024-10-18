@@ -14,6 +14,7 @@ This repo uses [poe-itemtext-parser](https://github.com/klayveR/poe-itemtext-par
 
 const exampleItem = `CTRL-C item from in-game`;
 
+import 'poe-item-hover/dist/index.css';
 import { ItemHover } from 'poe-item-hover';
 
 function MyFancyItem() {
