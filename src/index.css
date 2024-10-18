@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "fontin";
+  src: url("./assets/fonts/Fontin-SmallCaps.ttf");
+}
+
+.rare-header__double {
+  background: url("./assets/rare-double-left.png") top left no-repeat,
+    url("./assets/rare-double-right.png") top right no-repeat,
+    url("./assets/rare-double-middle.png") top center repeat-x;
+  color: #ff7;
+  height: 54px;
+}
+
+.rare-header__double span:first-child {
+  margin-top: 2px;
+}
+
+.item-hover {
+  width: 28rem;
+}
+
+.custom-text-augment {
+  color: rgb(136, 136, 255);
+}
+
+.custom-text-fracture {
+  color: rgb(162, 145, 98);
+}
+
+.custom-text-enchant {
+  color: rgb(184, 218, 242);
+}
+
+
+* {
+  display: none !important;
+}
