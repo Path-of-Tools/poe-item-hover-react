@@ -1,6 +1,6 @@
 {
   "name": "poe-item-hover",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Item hovers for Path of Exile, React style",
   "main": "dist/poe-item-hover.es.js",
   "files": [
