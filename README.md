@@ -5,6 +5,12 @@
 
 This repo uses [poe-itemtext-parser](https://github.com/klayveR/poe-itemtext-parser) under the hood to generate the properties needed to display the items.
 
+## Install
+
+Install with your favorite package manager:
+
+`npm install poe-item-hover --save`
+
 ## Usage
 
 > [!IMPORTANT]
