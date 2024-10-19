@@ -1,7 +1,27 @@
 import React from "react";
 
-import { Parser } from "@klayver/poe-itemtext-parser";
+import { Parser, ItemText } from "@klayver/poe-itemtext-parser";
 import ItemSeparator from "../components/ItemSeparator";
+
+function parseCrucibleItem(text: ItemText) {
+  const crucibleSection: string[] = [];
+
+  const hasCrucibleTree = text.sections.filter((sec) => {
+    return sec.lines.some((line) => line.includes("crucible"));
+  });
+
+  if (hasCrucibleTree.length === 0) {
+    return [];
+  }
+
+  for (const sec of hasCrucibleTree) {
+    for (const line of sec.lines) {
+      crucibleSection.push(line.replace("(crucible)", "").trim());
+    }
+  }
+
+  return crucibleSection;
+}
 
 export function useItem(item: string) {
   const parsedItem = new Parser(item);
@@ -18,6 +38,8 @@ export function useItem(item: string) {
   const implicits = parsedItem.affixes?.filter(
     (aff) => aff.type === "implicit"
   );
+
+  const crucible = parseCrucibleItem(parsedItem.itemtext);
 
   const ItemRequirements = () => {
     if (!requirements) {
@@ -129,7 +151,8 @@ export function useItem(item: string) {
       <div className="flex flex-col text-center">
         {quality?.value && quality.value > 0 && (
           <span className="text-s text-poe-default">
-            Quality: <span className="custom-text-augment">+{quality?.value}%</span>
+            Quality:{" "}
+            <span className="custom-text-augment">+{quality?.value}%</span>
           </span>
         )}
         <OffensiveStats />
@@ -210,6 +233,27 @@ export function useItem(item: string) {
     );
   };
 
+  const ItemCrucible = () => {
+    if (!crucible || crucible.length === 0) {
+      return null;
+    }
+
+    return (
+      <>
+        <ItemSeparator />
+        <div className="flex flex-col text-center">
+          {crucible.map((aff) => {
+            return (
+              <span className={`text-orange-500 text-xs`} key={aff}>
+                {aff}
+              </span>
+            );
+          })}
+        </div>
+      </>
+    );
+  };
+
   return {
     itemName,
     quality,
@@ -219,6 +263,7 @@ export function useItem(item: string) {
     DefensiveStats,
     ItemEnchants,
     ItemImplicits,
-    ItemExplicits
+    ItemExplicits,
+    ItemCrucible,
   };
 }

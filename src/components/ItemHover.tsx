@@ -14,6 +14,7 @@ export function ItemHover({ itemData }: ItemHoverProps) {
     ItemEnchants,
     ItemImplicits,
     ItemExplicits,
+    ItemCrucible
   } = useItem(itemData);
 
   const itemRef = useRef<HTMLDivElement>(null);
@@ -56,6 +57,7 @@ export function ItemHover({ itemData }: ItemHoverProps) {
           <ItemEnchants />
           <ItemImplicits />
           <ItemExplicits />
+          <ItemCrucible />
         </div>
       </div>
     </div>
